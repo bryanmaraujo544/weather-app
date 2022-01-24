@@ -24,9 +24,19 @@ export const MainInfos = styled.div`
   width: 100%;
   align-items: flex-start;
   gap: .8rem;
+
+  @media(max-width: 1080px) {
+    align-items: center;
+  }
+  
   .icon {
     height: 15rem;
     width: 100%;
+    text-align: left;
+
+    @media(max-width: 1080px) {
+      text-align: center;
+    }
     
     img {
       height: 100%;
@@ -60,6 +70,10 @@ export const OtherWeatherInfos = styled.div`
     align-items: center;
     width: 100%;
 
+    @media(max-width: 1080px) {
+      justify-content: center;
+    }
+
     img {
       width: 3.6rem;
     }
@@ -77,7 +91,7 @@ export const CityInfos = styled.div`
   position: relative;
   width: 100%;
   height: 10rem;
-  border-radius: 32px;
+  border-radius: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,15 +104,14 @@ export const CityInfos = styled.div`
     z-index: 8;
     position: absolute;
     background: #00000065;
-    border-radius: 32px;
-
+    border-radius: 24px;
   }
   .city-bg {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 32px;
+    border-radius: 24px;
     z-index: 5;
 
   }
