@@ -6,6 +6,7 @@ export const Container = styled.form`
   justify-content: center;
   background: #fff;
   width: 100%;
+  margin-bottom: 1.2rem;
 
   button {
     background: none;
