@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background: purple;
+  flex-direction: column;
+  padding: 3.2rem;
+  background: ${({ theme }) => theme.colors.gray[100]};
 `;  

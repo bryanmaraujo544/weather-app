@@ -2,7 +2,7 @@ export const theme = {
   colors: {
     white: '#fff',
     gray: {
-      100: '#F8F9FA',
+      100: '#E7EBEF',
       200: '#DEE2E6',
       300: '#ADB5BD',
       500: '#6C757D',
