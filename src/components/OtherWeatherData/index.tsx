@@ -13,17 +13,17 @@ import { OtherWeatherDataContext } from '../contexts/OtherWeatherDataContext';
 
 import { convertUnixToDate } from '../../utils/convertUnixToDate';
 import { getWeatherIcon } from '../../utils/getWeatherIcon';
+import { convertCelsiusToFahr } from '../../utils/convertCelsiusToFahr';
 
-const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const highlights = [
-  'UV Index',
-  'Wind Speed',
-  'Humidity',
-  'Visibility',
-  'Pressure'
-]
+interface Props {
+  isCelsius: boolean,
+  setIsCelsius: any
+}
 
-export const OtherWeatherData = () => {
+export const OtherWeatherData = ({
+  isCelsius,
+  setIsCelsius
+}: Props) => {
   const { otherWeatherData } = useContext(OtherWeatherDataContext);
   const [weekWeatherData, setWeekWeatherData] = useState([]);
 
@@ -56,15 +56,26 @@ export const OtherWeatherData = () => {
 
   return (
     <Container>
-      <Header />
+      <Header
+        isCelsius={isCelsius}
+        setIsCelsius={setIsCelsius}
+      />
       <WeekWeather>
         {weekWeatherData.map((day: any) => (
           <div className="day-weather-card">
             <div className="day">{day.day}</div>
             <img src={getWeatherIcon(day?.weather[0]?.icon)} alt="wather-icon" />
             <div className="temperature-min-max">
-              <p className="max">{day.temp.max}°</p>
-              <div className="min">{day.temp.min}3°</div>
+              <p className="max">{isCelsius ? (
+                Math.round(day.temp.max)
+              ) : (
+                Math.round(convertCelsiusToFahr(day.temp.max))
+              )}°</p>
+              <div className="min">{isCelsius ? (
+                Math.round(day.temp.min)
+              ) : (
+                Math.round(convertCelsiusToFahr(day.temp.min))
+              )}°</div>
             </div>
           </div>
         ))}
@@ -93,8 +104,16 @@ export const OtherWeatherData = () => {
             <div className="hightlight-card">
               <p className="highlight-title">Min & Max</p>
               <div className="min-max">
-                <p className="temp">{otherWeatherData?.daily ? otherWeatherData?.daily[0]?.temp?.max : 0}°</p>
-                <p className="temp">{otherWeatherData?.daily ? otherWeatherData?.daily[0]?.temp?.min : 0}°</p>
+                <p className="temp">{otherWeatherData?.daily ? isCelsius ? (
+                  Math.round(otherWeatherData?.daily[0]?.temp?.max)
+                ) : (
+                  Math.round(convertCelsiusToFahr(otherWeatherData?.daily[0]?.temp?.max))
+                ) : 0}°</p>
+                <p className="temp">{otherWeatherData?.daily ? isCelsius ? (
+                  Math.round(otherWeatherData?.daily[0]?.temp?.min)
+                ) : (
+                  Math.round(convertCelsiusToFahr(otherWeatherData?.daily[0]?.temp?.min))
+                ) : 0}°</p>
               </div>
               <img src={Temperature} alt="pressure-icon"/>
             </div>

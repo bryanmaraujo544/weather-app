@@ -9,10 +9,19 @@ import { getCityImageUrl } from '../../services/unsplash';
 import { useEffect, useState } from 'react';
 import { getUTCDate } from '../../utils/getUTCDate';
 import { getWeatherIcon } from '../../utils/getWeatherIcon';
+import { convertCelsiusToFahr } from '../../utils/convertCelsiusToFahr';
 
-export const CurrentWeather = () => {
+interface Props {
+  isCelsius: boolean,
+  setIsCelsius: any
+}
+
+export const CurrentWeather = ({
+  isCelsius,
+  setIsCelsius
+}: Props) => {
   const [cityImageUrl, setCityImageUrl] = useState('');
-
+  
   const [cityName, setCityName] = useState(''); // State that will be used to search city's weather information
   const [currentWeatherData, setCurrentWeatherData] = useState({} as any); // The object that gonna contains all the curreant weather informations of the city
   const [mainWeatherIcon, setMainWeatherIcon] = useState(Cloud); // The Icon tha will changes every time a new city is searched
@@ -43,7 +52,11 @@ export const CurrentWeather = () => {
             <img src={mainWeatherIcon} alt="weather-icon" />
         </div>
         <h3 className="temperature">
-          {currentWeatherData?.main?.temp} <sup>°C</sup>
+          {isCelsius ? (
+            Math.round(currentWeatherData?.main?.temp)
+          ): (
+            Math.round(convertCelsiusToFahr(currentWeatherData?.main?.temp))
+          )} <sup>°{isCelsius ? 'C' : 'F'}</sup>
         </h3>
         <p className="day-time">
           <b>{day},</b> {formattedTime}
