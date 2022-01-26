@@ -1,26 +1,21 @@
 export const convertUnixToNormalTime = (unixTime: number, timezone: number) => {
   const timezoneInHours = timezone / 3600;
-  console.log({ timezoneInHours });
 
-  // Create a new JavaScript Date object based on the timestamp
-  // multiplied by 1000 so that the argument is in milliseconds, not seconds.
   const date = new Date();
-  const utcHours = date.getUTCHours();
-  console.log({ utcHours });
-  date.setHours(utcHours + timezoneInHours);
+  const utcHours = date.getUTCHours(); // this return the hours in UTC 0 time
+
+  date.setHours(utcHours + timezoneInHours); // Here I change the hours of the utc based on timezone
 
   const dayNumber = date.getDay();
-  console.log(date.getDay());
   
-  // Hours part from the timestamp
+  // Hours in string
   const hours = (date.getHours() < 10 ? "0" : '') + (date.getHours());
 
-  // Minutes part from the timestamp
+  // Minutes in string
   const minutes = (date.getMinutes() < 10 ? "0" : '') + date.getMinutes();
 
 
   let day;
-
   switch(dayNumber) {
     case 0:
       day = 'Sunday';
