@@ -7,12 +7,19 @@ import Rain from '../../assets/icons/rain/39.png';
 
 import { getCityImageUrl } from '../../services/unsplash';
 import { useEffect, useState } from 'react';
+import { convertUnixToNormalTime } from '../../utils/convertUnixToNormalTime';
 
 export const CurrentWeather = () => {
   const [cityImageUrl, setCityImageUrl] = useState('');
 
+  const [cityName, setCityName] = useState('');
+  const [currentWeatherData, setCurrentWeatherData] = useState({} as any);
+
+  const { formattedTime, day } = convertUnixToNormalTime(currentWeatherData.dt, currentWeatherData.timezone)
+  console.log({ currentWeatherData });
+
   useEffect(() => {
-    handleSetCityImageUrl('Rio de janeiro');
+    handleSetCityImageUrl('Rio De Janeiro');
   }, []);
   
   async function handleSetCityImageUrl(cityName: string) {
@@ -22,16 +29,20 @@ export const CurrentWeather = () => {
 
   return (
     <Container>
-      <Search />
+      <Search 
+        cityName={cityName}
+        setCityName={setCityName}
+        setCurrentWeatherData={setCurrentWeatherData}
+      />
       <MainInfos>
         <div className="icon">
           <img src={SunIcon} alt="weather-icon" />
         </div>
         <h3 className="temperature">
-          12 <sup>°C</sup>
+          {currentWeatherData?.main?.temp} <sup>°C</sup>
         </h3>
         <p className="day-time">
-          <b>Monday,</b> 16:00
+          <b>{day},</b> {formattedTime}
         </p>
       </MainInfos>
       <hr></hr>

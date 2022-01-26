@@ -24,10 +24,10 @@ const highlights = [
 ]
 
 export const OtherWeatherData = () => {
-  useEffect(() => {
-    const time = convertUnixToNormalTime(1643061436);
-    console.log({ time });
-  }, []);
+  // useEffect(() => {
+  //   const time = convertUnixToNormalTime(1643061436);
+  //   console.log({ time });
+  // }, []);
 
   return (
     <Container>

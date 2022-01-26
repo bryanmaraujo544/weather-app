@@ -13,7 +13,8 @@ export const Container = styled.form`
     display: flex;
     align-items: center;
     width: 2.4rem;
-
+    cursor: pointer;
+    
     .icon {
       width: 100%;
       height: 100%;
