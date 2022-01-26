@@ -25,7 +25,6 @@ export const Search = ({
     (async () => {
       try {
         const { data } = await currentWeather.get(`weather?appid=a5e8f0ff6c4539df70bee958dc95fa10&units=metric&q=São Paulo`) as any;
-        console.log('data');
         setCurrentWeatherData(data);
   
         const lat = data?.coord?.lat;
@@ -40,6 +39,9 @@ export const Search = ({
 
   async function handleGetCurrentWeather(event: any) {
     event.preventDefault();
+    if (cityName === '') {
+      return window.alert('Do not let any field empty');
+    }
     try {
       const { data } = await currentWeather.get(`weather?appid=a5e8f0ff6c4539df70bee958dc95fa10&units=metric&q=${cityName}`) as any;
       setCurrentWeatherData(data);
@@ -48,8 +50,10 @@ export const Search = ({
       const lon = data?.coord?.lon;
       const { data: otherWeatherData } = await weekWeather.get(`onecall?exclude=minutely,hourly&units=metric&appid=a5e8f0ff6c4539df70bee958dc95fa10&lat=${lat}&lon=${lon}`);
       setOtherWeatherData(otherWeatherData);
-    } catch(err) {
-      console.log({ err });
+    } catch(err: any) {
+      const errMessage = err?.response?.data?.message;
+      window.alert(errMessage);
+      setCityName('');
     }
     // await getWeatherData('Rio de janeiro');
 
