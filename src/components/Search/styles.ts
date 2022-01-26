@@ -34,5 +34,9 @@ export const Container = styled.form`
       color: ${({ theme }) => theme.colors.gray[700]};
       
     }
+
+    @media(max-width: 1080px) {
+      text-align: center;
+    }
   }
 `;

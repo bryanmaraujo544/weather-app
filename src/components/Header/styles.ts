@@ -36,13 +36,26 @@ export const Container = styled.header`
   `;
 
 export const Temp = styled.p<TempProps>`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 50%;
-  background: ${({ isActive }) => isActive ? '#000' : 'transparent'};
   color: ${({ isActive }) => isActive ? '#fff' : '#000'};
   cursor: pointer;
+  
+  .bg {
+    background: #000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 10;
+  }
+
+  p {
+    z-index: 15;
+  }
 `;

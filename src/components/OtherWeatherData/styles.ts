@@ -19,8 +19,7 @@ export const WeekWeather = styled.div`
   display: flex;
   width: 100%;
   gap: .8rem;
-  margin-top: .8rem;
-
+  margin-bottom: 1.2rem;
   @media(max-width: 768px) {
     overflow-x: scroll;
   }
@@ -78,6 +77,8 @@ export const TodayHighlights = styled.section`
 
   flex: 1;
 
+
+
   .title {
     font-size: 2rem;
     font-weight: 700;
@@ -89,6 +90,14 @@ export const TodayHighlights = styled.section`
     grid-template-columns: repeat(3, 1fr);
     gap: 1.6rem;
     height: 100%;
+
+    @media(max-width: 580px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media(max-width: 415px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
 
     .hightlight-card {
       display: flex;

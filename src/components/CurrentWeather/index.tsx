@@ -53,9 +53,9 @@ export const CurrentWeather = ({
         </div>
         <h3 className="temperature">
           {isCelsius ? (
-            Math.round(currentWeatherData?.main?.temp)
+            currentWeatherData?.main?.temp ? Math.round(currentWeatherData?.main?.temp) : 0
           ): (
-            Math.round(convertCelsiusToFahr(currentWeatherData?.main?.temp))
+            currentWeatherData?.main?.temp ? Math.round(convertCelsiusToFahr(currentWeatherData?.main?.temp)) : 0
           )} <sup>°{isCelsius ? 'C' : 'F'}</sup>
         </h3>
         <p className="day-time">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { motion } from 'framer-motion';
 import { Container, Temp } from './styles';
 
 interface Props {
@@ -17,11 +17,17 @@ export const Header = ({
       <div className="temp-measurements">
         <Temp isActive={isCelsius} 
           onClick={() => setIsCelsius(true)}
-        >°C</Temp>
+        >
+          {isCelsius && <motion.div className="bg" layoutId="bg"></motion.div>}
+          <p>°C</p>  
+        </Temp>
         <Temp 
           isActive={!isCelsius} 
           onClick={() => setIsCelsius(false)}
-        >°F</Temp>
+        >
+          {!isCelsius && <motion.div className="bg" layoutId="bg"></motion.div>}
+          <p>°F</p> 
+        </Temp>
       </div>
     </Container>
   );
