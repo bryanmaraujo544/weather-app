@@ -102,6 +102,20 @@ export const TodayHighlights = styled.section`
       border-radius: 20px;
       box-shadow: 0 2px 5px #00000005;
       
+
+      .min-max {
+        display: flex;
+        gap: 1.0rem;
+
+        .temp {
+          font-size: 1.8rem;
+          font-weight: 600;
+
+          &:nth-child(2){
+            color: ${({ theme }) => theme.colors.gray[300]};
+          }
+        }
+      }
       .highlight-title {
         font-size: 1.4rem;
         color: ${({ theme }) => theme.colors.gray[500]};
@@ -112,6 +126,11 @@ export const TodayHighlights = styled.section`
         font-size: 3.2rem;
         color: ${({ theme }) => theme.colors.gray[900]};
         font-weight: 500;
+
+        b {
+          font-size: 1.4rem;
+          font-weight: 500;
+        }
         
       }
       

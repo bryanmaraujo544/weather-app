@@ -7,27 +7,27 @@ import Wind from '../../assets/icons/wind-speed.png';
 
 import { getCityImageUrl } from '../../services/unsplash';
 import { useEffect, useState } from 'react';
-import { convertUnixToNormalTime } from '../../utils/convertUnixToNormalTime';
+import { getUTCDate } from '../../utils/getUTCDate';
 import { getWeatherIcon } from '../../utils/getWeatherIcon';
 
 export const CurrentWeather = () => {
-  const SunIcon = getWeatherIcon('50n');
-
-
   const [cityImageUrl, setCityImageUrl] = useState('');
 
-  const [cityName, setCityName] = useState('');
-  const [currentWeatherData, setCurrentWeatherData] = useState({} as any);
-  console.log({ currentWeatherData });
+  const [cityName, setCityName] = useState(''); // State that will be used to search city's weather information
+  const [currentWeatherData, setCurrentWeatherData] = useState({} as any); // The object that gonna contains all the curreant weather informations of the city
+  const [mainWeatherIcon, setMainWeatherIcon] = useState(Cloud); // The Icon tha will changes every time a new city is searched
 
-  const { formattedTime, day } = convertUnixToNormalTime(currentWeatherData.dt, currentWeatherData.timezone);
+  const { formattedTime, day } = getUTCDate(currentWeatherData.timezone); // Here I am grabbin the day and time of that city
 
   useEffect(() => {
-    handleSetCityImageUrl(currentWeatherData.name);
+    handleSetCityImageUrl(currentWeatherData?.name);
+
+    const icon = !!currentWeatherData.weather ? getWeatherIcon(currentWeatherData?.weather[0]?.icon) : Cloud;
+    setMainWeatherIcon(icon || Cloud);
   }, [currentWeatherData]);
   
   async function handleSetCityImageUrl(cityName: string) {
-    const url = await getCityImageUrl(cityName);
+    const url = await getCityImageUrl(cityName || 'Rio de Janeiro');
     setCityImageUrl(url);
   }
 
@@ -40,7 +40,7 @@ export const CurrentWeather = () => {
       />
       <MainInfos>
         <div className="icon">
-          <img src={getWeatherIcon(currentWeatherData?.weather[0]?.icon)} alt="weather-icon" />
+            <img src={mainWeatherIcon} alt="weather-icon" />
         </div>
         <h3 className="temperature">
           {currentWeatherData?.main?.temp} <sup>°C</sup>

@@ -1,4 +1,4 @@
-export const convertUnixToNormalTime = (unixTime: number, timezone: number) => {
+export const getUTCDate = (timezone: number) => {
   const timezoneInHours = timezone / 3600;
 
   const date = new Date();
@@ -13,7 +13,6 @@ export const convertUnixToNormalTime = (unixTime: number, timezone: number) => {
 
   // Minutes in string
   const minutes = (date.getMinutes() < 10 ? "0" : '') + date.getMinutes();
-
 
   let day;
   switch(dayNumber) {
