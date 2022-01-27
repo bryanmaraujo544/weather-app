@@ -9,7 +9,7 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 function App() {
   const [colorTheme, setColorTheme] = useLocalStorage('color-theme', 'light');
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={colorTheme === 'light' ? theme.light : theme.dark}>
       <Container>
         <GlobalStyles />
         <Home 
@@ -17,7 +17,6 @@ function App() {
           setColorTheme={setColorTheme}
         />
       </Container>
-
     </ThemeProvider>
   );
 }

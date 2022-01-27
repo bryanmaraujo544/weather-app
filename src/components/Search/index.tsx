@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useContext, useEffect } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 import { Container } from './styles';
 import { currentWeather, weekWeather } from '../../services/weather';
 
@@ -22,9 +22,8 @@ export const Search = ({
   cityNameInLocalStorage,
   setCityNameInLocalStorage
 }: Props) => {
-  const { otherWeatherData, setOtherWeatherData } = useContext(OtherWeatherDataContext);
+  const { setOtherWeatherData } = useContext(OtherWeatherDataContext);
 
-  console.log({ cityNameInLocalStorage });
   useEffect(() => {
     (async () => {
       try {

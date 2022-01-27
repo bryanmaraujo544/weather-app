@@ -31,6 +31,7 @@ export const WeekWeather = styled.div`
   .day {
     font-size: 1.2rem;
     font-weight: 500;
+    color: ${({ theme }) => theme.colors.gray[900]};
   }
 
   .day-weather-card {
@@ -78,12 +79,13 @@ export const TodayHighlights = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-
   flex: 1;
+
   .title {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 2rem;
+    color: ${({ theme }) => theme.colors.gray[900]};
   }
 
   .hightlights {
@@ -108,11 +110,10 @@ export const TodayHighlights = styled.section`
       gap: .8rem;
 
       padding: 2rem;
-      background: #fff;
+      background: ${({ theme }) => theme.colors.white};
       border-radius: 20px;
       box-shadow: 0 2px 5px #00000005;
       
-
       .min-max {
         display: flex;
         gap: 1.0rem;
@@ -120,12 +121,14 @@ export const TodayHighlights = styled.section`
         .temp {
           font-size: 1.8rem;
           font-weight: 600;
+          color: ${({ theme }) => theme.colors.gray[900]};
 
           &:nth-child(2){
             color: ${({ theme }) => theme.colors.gray[300]};
           }
         }
       }
+
       .highlight-title {
         font-size: 1.4rem;
         color: ${({ theme }) => theme.colors.gray[500]};
@@ -146,9 +149,8 @@ export const TodayHighlights = styled.section`
       
       img {
         height: 2.0rem;
+        filter: ${({ theme }) => theme.title === 'light' ? 'invert(0)' : 'invert(100)'};
       }
-      
-      
 
       & + .sun {
         justify-content: flex-start;
@@ -158,6 +160,7 @@ export const TodayHighlights = styled.section`
         display: flex;
         align-items: center;
         gap: 1.2rem;
+        color: ${({ theme }) => theme.colors.gray[900]};
 
         &:nth-child(1){ 
           margin-top: .4rem;

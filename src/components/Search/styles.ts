@@ -4,7 +4,6 @@ export const Container = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
   width: 100%;
   margin-bottom: 1.2rem;
 
@@ -23,6 +22,7 @@ export const Container = styled.form`
   }
 
   input {
+    background: none;
     color: ${({ theme }) => theme.colors.gray[700]};
     width: 100%;
     padding: 8px;

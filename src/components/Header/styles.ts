@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../styles/theme';
 
 interface TempProps {
   isActive: boolean,
@@ -64,11 +65,12 @@ export const Temp = styled.p<TempProps>`
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 50%;
-  color: ${({ isActive }) => isActive ? '#fff' : '#000'};
+  color: ${({ isActive, theme }) => isActive ? theme.colors.white : theme.colors.black};
   cursor: pointer;
+  font-weight: 600;
   
   .bg {
-    background: #000;
+    background: ${({ theme }) => theme.colors.black};
     position: absolute;
     width: 100%;
     height: 100%;

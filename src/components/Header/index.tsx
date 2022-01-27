@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Container, Temp } from './styles';
 
@@ -38,8 +37,8 @@ export const Header = ({
           </Temp>
         </div>
         <div className="dark-mode-container">
-          {colorTheme === 'light' && <img src={Sun} alt="sun-icon" onClick={() => setColorTheme('dark')} />}
-          {colorTheme === 'dark' && <img src={Moon} alt="moon-icon" onClick={() => setColorTheme('light')} />}
+          {colorTheme === 'dark' && <img src={Sun} alt="sun-icon" onClick={() => setColorTheme('light')} />}
+          {colorTheme === 'light' && <img src={Moon} alt="moon-icon" onClick={() => setColorTheme('dark')} />}
         </div>
       </div>
     </Container>

@@ -55,7 +55,9 @@ export const OtherWeatherData = ({
   function getDateInString(unix: number) {
     const { date } = convertUnixToDate(unix);
 
-    return date.getHours() + ':' + date.getMinutes(); 
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    return (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes; 
   }
 
   return (

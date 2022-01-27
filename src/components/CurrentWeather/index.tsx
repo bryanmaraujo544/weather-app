@@ -73,7 +73,7 @@ export const CurrentWeather = ({
           <p className="status-message">Clouds: {currentWeatherData?.clouds?.all}%</p>
         </div>
         <div>
-          <img src={Wind} alt="cloud-icon" />
+          <img src={Wind}  className="wind-icon" alt="wind-icon" />
           <p className="status-message">Wind - {currentWeatherData?.wind?.speed}<sub>km/h</sub></p>
         </div>
         <CityInfos>

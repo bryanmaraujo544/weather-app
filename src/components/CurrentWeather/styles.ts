@@ -14,7 +14,7 @@ export const Container = styled.div`
   }
 
   hr {
-    background: #E7EBEF;
+    background: ${({ theme }) => theme.colors.gray[100]};
     height: .1rem;
     border-radius: 999px;
     width: 100%;
@@ -50,6 +50,7 @@ export const MainInfos = styled.div`
   .temperature {
     font-size: 5.6rem;
     font-weight: 700;
+    color: ${({ theme }) => theme.colors.gray[900]};
   }
 
   .day-time {
@@ -78,14 +79,23 @@ export const OtherWeatherInfos = styled.div`
       justify-content: center;
     }
 
+    .wind-icon {
+      filter: ${({ theme }) => theme.title === 'light' ? 'invert(0)' : 'invert(100)'};
+    }
+
     img {
       width: 3.6rem;
+
+      &:nth-child(2) {
+        background: red;
+      }
     }
 
     .status-message {
       font-size: 1.4rem;
       font-weight: 500;
       margin-left: 1.2rem;
+      color: ${({ theme }) => theme.colors.gray[900]};
     }
   }
 `;
@@ -123,7 +133,7 @@ export const CityInfos = styled.div`
   .city-name {
     z-index: 10;
     font-size: 1.4rem;
-    color: ${({ theme }) => theme.colors.white};
+    color: #fff;
     font-weight: 500;
   }
 `;

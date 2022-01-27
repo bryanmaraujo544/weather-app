@@ -10,7 +10,6 @@ import MoonBrokenClouds from '../assets/icons/moon/41.png';
 import MoonRain from '../assets/icons/moon/1.png';
 import MoonThunderstorm from '../assets/icons/moon/20.png';
 
-import Thunderstorm from '../assets/icons/cloud/12.png';
 import Cloud from '../assets/icons/cloud/35.png';
 import Mist from '../assets/icons/snow/36.png';
 import CloudRain from '../assets/icons/cloud/7.png';
