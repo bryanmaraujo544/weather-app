@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { Container } from './styles';
 import { currentWeather, weekWeather } from '../../services/weather';
 
@@ -11,20 +11,24 @@ interface Props {
   cityName: string,
   setCityName: any,
   setCurrentWeatherData: any,
+  cityNameInLocalStorage: string,
+  setCityNameInLocalStorage: any
 }
 
 export const Search = ({
   cityName,
   setCityName,
   setCurrentWeatherData,
+  cityNameInLocalStorage,
+  setCityNameInLocalStorage
 }: Props) => {
   const { otherWeatherData, setOtherWeatherData } = useContext(OtherWeatherDataContext);
-  console.log('otherWeatherData', otherWeatherData);
 
+  console.log({ cityNameInLocalStorage });
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await currentWeather.get(`weather?appid=a5e8f0ff6c4539df70bee958dc95fa10&units=metric&q=São Paulo`) as any;
+        const { data } = await currentWeather.get(`weather?appid=a5e8f0ff6c4539df70bee958dc95fa10&units=metric&q=${cityNameInLocalStorage === '' ? 'São Paulo' : cityNameInLocalStorage}`) as any;
         setCurrentWeatherData(data);
   
         const lat = data?.coord?.lat;
@@ -37,12 +41,13 @@ export const Search = ({
     })();
   }, []);
 
-  async function handleGetCurrentWeather(event: any) {
+  const handleGetCurrentWeather = useCallback(async (event: any) => {
     event.preventDefault();
     if (cityName === '') {
       return window.alert('Do not let any field empty');
     }
     try {
+      setCityNameInLocalStorage(cityName);
       const { data } = await currentWeather.get(`weather?appid=a5e8f0ff6c4539df70bee958dc95fa10&units=metric&q=${cityName}`) as any;
       setCurrentWeatherData(data);
 
@@ -55,9 +60,7 @@ export const Search = ({
       window.alert(errMessage);
       setCityName('');
     }
-    // await getWeatherData('Rio de janeiro');
-
-  }
+  }, [cityName]);
 
 
   function handleChange(event: any) {

@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
-
   display: grid;
   grid-template-columns: 40rem 1fr;
+  height: 100%;
+  width: 100%;
+  max-height: 750px;
+  max-width: 1720px;
+  background: green;
+
+  background: green;
+  
+
+  @media(min-height: 890px) {
+    border-radius: 4.8rem;
+  }
 
   @media(max-width: 1580px){
     grid-template-columns: 35rem 1fr;

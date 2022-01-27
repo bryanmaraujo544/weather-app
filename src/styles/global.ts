@@ -16,6 +16,10 @@ const global = createGlobalStyle`
   html {
     font-size: 62.5%;
 
+    @media(min-width: 1900px){
+      font-size: 12px;    
+    }
+
   }
 
   body {

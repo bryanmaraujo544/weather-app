@@ -9,6 +9,10 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.colors.gray[100]};
   gap: 4.2rem;
 
+  @media(min-height: 890px) {
+    border-radius:  0 4.8rem 4.8rem 0;
+  }
+
   
   @media(max-width: 768px) {
     overflow-x: hidden;
@@ -76,9 +80,6 @@ export const TodayHighlights = styled.section`
   width: 100%;
 
   flex: 1;
-
-
-
   .title {
     font-size: 2rem;
     font-weight: 700;

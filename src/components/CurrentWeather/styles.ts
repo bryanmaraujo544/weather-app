@@ -9,6 +9,10 @@ export const Container = styled.div`
   padding: 3.2rem;
   background: ${({ theme }) => theme.colors.white};
 
+  @media(min-height: 890px) {
+    border-radius: 4.8rem 0 0 4.8rem;
+  }
+
   hr {
     background: #E7EBEF;
     height: .1rem;

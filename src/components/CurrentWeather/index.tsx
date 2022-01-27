@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { getUTCDate } from '../../utils/getUTCDate';
 import { getWeatherIcon } from '../../utils/getWeatherIcon';
 import { convertCelsiusToFahr } from '../../utils/convertCelsiusToFahr';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface Props {
   isCelsius: boolean,
@@ -22,6 +23,7 @@ export const CurrentWeather = ({
 }: Props) => {
   const [cityImageUrl, setCityImageUrl] = useState('');
   
+  const [cityNameInLocalStorage, setCityNameInLocalStorage] = useLocalStorage('city-name', '');
   const [cityName, setCityName] = useState(''); // State that will be used to search city's weather information
   const [currentWeatherData, setCurrentWeatherData] = useState({} as any); // The object that gonna contains all the curreant weather informations of the city
   const [mainWeatherIcon, setMainWeatherIcon] = useState(Cloud); // The Icon tha will changes every time a new city is searched
@@ -46,6 +48,8 @@ export const CurrentWeather = ({
         cityName={cityName}
         setCityName={setCityName}
         setCurrentWeatherData={setCurrentWeatherData}
+        cityNameInLocalStorage={cityNameInLocalStorage}
+        setCityNameInLocalStorage={setCityNameInLocalStorage}
       />
       <MainInfos>
         <div className="icon">
