@@ -11,6 +11,7 @@ import { getUTCDate } from '../../utils/getUTCDate';
 import { getWeatherIcon } from '../../utils/getWeatherIcon';
 import { convertCelsiusToFahr } from '../../utils/convertCelsiusToFahr';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { motion } from 'framer-motion';
 
 interface Props {
   isCelsius: boolean,
@@ -50,8 +51,14 @@ export const CurrentWeather = ({
         setCurrentWeatherData={setCurrentWeatherData}
         cityNameInLocalStorage={cityNameInLocalStorage}
         setCityNameInLocalStorage={setCityNameInLocalStorage}
+        
       />
-      <MainInfos>
+      <MainInfos
+        as={motion.div}
+        initial= {{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: .75 }}
+      >
         <div className="icon">
             <img src={mainWeatherIcon} alt="weather-icon" />
         </div>
@@ -67,7 +74,12 @@ export const CurrentWeather = ({
         </p>
       </MainInfos>
       <hr></hr>
-      <OtherWeatherInfos>
+      <OtherWeatherInfos
+        as={motion.div}
+        initial= {{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: .75 }}
+      >
         <div>
           <img src={Cloud} alt="cloud-icon" />
           <p className="status-message">Clouds: {currentWeatherData?.clouds?.all}%</p>

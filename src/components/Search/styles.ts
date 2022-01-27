@@ -17,13 +17,13 @@ export const Container = styled.form`
     .icon {
       width: 100%;
       height: 100%;
-      color: ${({ theme }) => theme.colors.gray[700]};
+      color: ${({ theme }) => theme?.colors?.gray[700]};
     }
   }
 
   input {
     background: none;
-    color: ${({ theme }) => theme.colors.gray[700]};
+    color: ${({ theme }) => theme?.colors?.gray[700]};
     width: 100%;
     padding: 8px;
     outline: none;
@@ -31,7 +31,7 @@ export const Container = styled.form`
     font-weight: 600;
 
     &::placeholder {
-      color: ${({ theme }) => theme.colors.gray[700]};
+      color: ${({ theme }) => theme?.colors?.gray[700]};
       
     }
 

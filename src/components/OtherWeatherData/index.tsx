@@ -14,6 +14,7 @@ import { OtherWeatherDataContext } from '../contexts/OtherWeatherDataContext';
 import { convertUnixToDate } from '../../utils/convertUnixToDate';
 import { getWeatherIcon } from '../../utils/getWeatherIcon';
 import { convertCelsiusToFahr } from '../../utils/convertCelsiusToFahr';
+import { motion } from 'framer-motion';
 
 interface Props {
   isCelsius: boolean,
@@ -70,7 +71,11 @@ export const OtherWeatherData = ({
       />
       <WeekWeather>
         {weekWeatherData.map((day: any) => (
-          <div className="day-weather-card">
+          <motion.div 
+            className="day-weather-card"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
             <div className="day">{day.day}</div>
             <img src={getWeatherIcon(day?.weather[0]?.icon)} alt="wather-icon" />
             <div className="temperature-min-max">
@@ -85,10 +90,15 @@ export const OtherWeatherData = ({
                 Math.round(convertCelsiusToFahr(day.temp.min))
               )}°</div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </WeekWeather>
-      <TodayHighlights>
+      <TodayHighlights
+        as={motion.section}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: .75 }}
+      >
         <h3 className="title">Today's Highlights</h3>
         <div className="hightlights">
             <div className="hightlight-card">

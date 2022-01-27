@@ -18,7 +18,12 @@ export const Header = ({
   setColorTheme
 }: Props) => {
   return (
-    <Container>
+    <Container
+      as={motion.header}
+      initial= {{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: .75 }}
+    >
       <h3>Week</h3>
       <div className="right-actions">
         <div className="temp-measurements">

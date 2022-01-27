@@ -7,12 +7,8 @@ export const Container = styled.div`
   width: 100%;
   max-height: 750px;
   max-width: 1720px;
-  background: green;
 
-  background: green;
-  
-
-  @media(min-height: 890px) {
+  @media(min-height: 800px) {
     border-radius: 4.8rem;
   }
 

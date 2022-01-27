@@ -24,10 +24,6 @@ const global = createGlobalStyle`
       font-size: 8px;    
     }
 
-    @media(max-width: 378px) {
-      font-size: 7px;
-    }
-
     @media(min-width: 1900px){
       font-size: 12px;    
     }

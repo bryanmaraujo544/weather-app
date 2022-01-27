@@ -6,6 +6,7 @@ import { currentWeather, weekWeather } from '../../services/weather';
 import { BiSearchAlt } from 'react-icons/bi';
 
 import { OtherWeatherDataContext } from '../contexts/OtherWeatherDataContext';
+import { motion } from 'framer-motion';
 
 interface Props {
   cityName: string,
@@ -54,11 +55,12 @@ export const Search = ({
       const lon = data?.coord?.lon;
       const { data: otherWeatherData } = await weekWeather.get(`onecall?exclude=minutely,hourly&units=metric&appid=a5e8f0ff6c4539df70bee958dc95fa10&lat=${lat}&lon=${lon}`);
       setOtherWeatherData(otherWeatherData);
+      setCityName('');
     } catch(err: any) {
       const errMessage = err?.response?.data?.message;
-      window.alert(errMessage);
+      // window.alert(errMessage);
       setCityName('');
-    }
+    } 
   }, [cityName]);
 
 
@@ -69,13 +71,18 @@ export const Search = ({
   return (
     <Container
       onSubmit={handleGetCurrentWeather}
+      data-testid="form"
+      as={motion.form}
+      initial= {{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: .75 }}
     >
       <button>
         <BiSearchAlt className="icon" />
       </button>
       <input 
         onChange={handleChange} 
-        title="search" 
+        data-testid="input"
         value={cityName} 
         placeholder="Search a city..."
       />
