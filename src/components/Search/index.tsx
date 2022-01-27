@@ -47,13 +47,13 @@ export const Search = ({
       return window.alert('Do not let any field empty');
     }
     try {
-      setCityNameInLocalStorage(cityName);
       const { data } = await currentWeather.get(`weather?appid=a5e8f0ff6c4539df70bee958dc95fa10&units=metric&q=${cityName}`) as any;
       setCurrentWeatherData(data);
-
+      
       const lat = data?.coord?.lat;
       const lon = data?.coord?.lon;
       const { data: otherWeatherData } = await weekWeather.get(`onecall?exclude=minutely,hourly&units=metric&appid=a5e8f0ff6c4539df70bee958dc95fa10&lat=${lat}&lon=${lon}`);
+      setCityNameInLocalStorage(cityName);
       setOtherWeatherData(otherWeatherData);
       setCityName('');
     } catch(err: any) {
