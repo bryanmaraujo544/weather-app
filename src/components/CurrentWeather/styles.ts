@@ -13,6 +13,10 @@ export const Container = styled.div`
     border-radius: 4.8rem 0 0 4.8rem;
   }
 
+  @media(min-width: 1420px) {
+    border-radius: 4.8rem 0 0 4.8rem;
+  }
+
   hr {
     background: ${({ theme }) => theme.colors.gray[100]};
     height: .1rem;

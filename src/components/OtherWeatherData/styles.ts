@@ -13,6 +13,9 @@ export const Container = styled.div`
     border-radius:  0 4.8rem 4.8rem 0;
   }
 
+  @media(min-width: 1420px) {
+    border-radius:  0 4.8rem 4.8rem 0;
+  }
   
   @media(max-width: 768px) {
     overflow-x: hidden;
