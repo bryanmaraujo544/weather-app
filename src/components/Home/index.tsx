@@ -5,7 +5,15 @@ import { OtherWeatherData } from '../OtherWeatherData';
 import { Container } from './styles';
 import { OtherWeatherDataProvider } from '../contexts/OtherWeatherDataContext';
 
-export const Home = () => {
+interface Props {
+  colorTheme: string,
+  setColorTheme: any
+}
+
+export const Home = ({
+  colorTheme,
+  setColorTheme,
+}: Props) => {
   const [isCelsius, setIsCelsius] = useState(true);
   return (
     <Container>
@@ -17,6 +25,8 @@ export const Home = () => {
         <OtherWeatherData 
           isCelsius={isCelsius}
           setIsCelsius={setIsCelsius}
+          colorTheme={colorTheme}
+          setColorTheme={setColorTheme}
         />
       </OtherWeatherDataProvider>
     </Container>

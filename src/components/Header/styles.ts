@@ -28,9 +28,30 @@ export const Container = styled.header`
     }
   }
 
+  .right-actions {
+    display: flex;
+    align-items: center;
+
+    .dark-mode-container {
+      width: 2.4rem;
+      height: 2.4rem;
+      position: relative;
+      margin-left: 2rem;
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 100%;
+        object-fit: contain;
+        position: absolute;
+        cursor: pointer;
+      }
+    }
+  }
+
   .temp-measurements {
     display: flex;
-    gap: .8rem;
+    gap: .4rem;
   }
   
   `;

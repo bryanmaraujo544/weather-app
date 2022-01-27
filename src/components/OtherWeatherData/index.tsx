@@ -17,12 +17,16 @@ import { convertCelsiusToFahr } from '../../utils/convertCelsiusToFahr';
 
 interface Props {
   isCelsius: boolean,
-  setIsCelsius: any
+  setIsCelsius: any,
+  colorTheme: string,
+  setColorTheme: any
 }
 
 export const OtherWeatherData = ({
   isCelsius,
-  setIsCelsius
+  setIsCelsius,
+  colorTheme,
+  setColorTheme
 }: Props) => {
   const { otherWeatherData } = useContext(OtherWeatherDataContext);
   const [weekWeatherData, setWeekWeatherData] = useState([]);
@@ -59,6 +63,8 @@ export const OtherWeatherData = ({
       <Header
         isCelsius={isCelsius}
         setIsCelsius={setIsCelsius}
+        colorTheme={colorTheme}
+        setColorTheme={setColorTheme}
       />
       <WeekWeather>
         {weekWeatherData.map((day: any) => (
