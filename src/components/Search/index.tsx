@@ -58,7 +58,7 @@ export const Search = ({
       setCityName('');
     } catch(err: any) {
       const errMessage = err?.response?.data?.message;
-      // window.alert(errMessage);
+      window.alert(errMessage);
       setCityName('');
     } 
   }, [cityName]);
@@ -87,6 +87,5 @@ export const Search = ({
         placeholder="Search a city..."
       />
     </Container>
-    
   )
 }

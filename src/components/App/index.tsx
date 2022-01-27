@@ -1,8 +1,8 @@
 import { Home } from '../Home';
-
-import { Container } from './styles';
-import GlobalStyles from '../../styles/global';
 import { ThemeProvider } from 'styled-components';
+
+import GlobalStyles from '../../styles/global';
+import { Container } from './styles';
 import { theme } from '../../styles/theme';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
