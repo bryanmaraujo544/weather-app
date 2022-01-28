@@ -27,17 +27,8 @@ export const Search = ({
 
   useEffect(() => {
     (async () => {
-      try {
-        const { data } = await currentWeather.get(`weather?appid=a5e8f0ff6c4539df70bee958dc95fa10&units=metric&q=${cityNameInLocalStorage === '' ? 'São Paulo' : cityNameInLocalStorage}`) as any;
-        setCurrentWeatherData(data);
-  
-        const lat = data?.coord?.lat;
-        const lon = data?.coord?.lon;
-        const { data: otherWeatherData } = await weekWeather.get(`onecall?exclude=minutely,hourly&units=metric&appid=a5e8f0ff6c4539df70bee958dc95fa10&lat=${lat}&lon=${lon}`);
-        setOtherWeatherData(otherWeatherData);
-      } catch(err) {
-        console.log({ err });
-      }
+      const city = cityNameInLocalStorage === '' ? 'São Paulo' : cityNameInLocalStorage;
+      await getWeatherData(city);
     })();
   }, []);
 
@@ -46,8 +37,12 @@ export const Search = ({
     if (cityName === '') {
       return window.alert('Do not let any field empty');
     }
+    await getWeatherData(cityName);
+  }, [cityName]);
+
+  async function getWeatherData(city: string) {
     try {
-      const { data } = await currentWeather.get(`weather?appid=a5e8f0ff6c4539df70bee958dc95fa10&units=metric&q=${cityName}`) as any;
+      const { data } = await currentWeather.get(`weather?appid=a5e8f0ff6c4539df70bee958dc95fa10&units=metric&q=${city}`) as any;
       setCurrentWeatherData(data);
       
       const lat = data?.coord?.lat;
@@ -55,14 +50,13 @@ export const Search = ({
       const { data: otherWeatherData } = await weekWeather.get(`onecall?exclude=minutely,hourly&units=metric&appid=a5e8f0ff6c4539df70bee958dc95fa10&lat=${lat}&lon=${lon}`);
       setCityNameInLocalStorage(cityName);
       setOtherWeatherData(otherWeatherData);
-      setCityName('');
     } catch(err: any) {
       const errMessage = err?.response?.data?.message;
       window.alert(errMessage);
+    } finally {
       setCityName('');
-    } 
-  }, [cityName]);
-
+    }
+  }
 
   function handleChange(event: any) {
     setCityName(event.target.value);
