@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { CurrentWeather } from '../CurrentWeather';
-import { OtherWeatherData } from '../OtherWeatherData';
+import { CurrentWeather } from '../../components/CurrentWeather';
+import { OtherWeatherData } from '../../components/OtherWeatherData';
 import { Container } from './styles';
-import { OtherWeatherDataProvider } from '../contexts/OtherWeatherDataContext';
+import { OtherWeatherDataProvider } from '../../components/contexts/OtherWeatherDataContext';
 
 interface Props {
   colorTheme: string,
