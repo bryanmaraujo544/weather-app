@@ -3,6 +3,7 @@ import { Container, Temp } from './styles';
 
 import Sun from '../../assets/icons/sun/26.png';
 import Moon from '../../assets/icons/moon/10.png';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   isCelsius: boolean,
@@ -17,6 +18,8 @@ export const Header = ({
   colorTheme,
   setColorTheme
 }: Props) => {
+  const navigate = useNavigate();
+
   return (
     <Container
       as={motion.header}
@@ -25,6 +28,14 @@ export const Header = ({
       transition={{ duration: .75 }}
     >
       <h3>Week</h3>
+      <motion.button 
+        className="find-cities-btn"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => navigate('/findCities')}
+      >
+        Find Cities By Weather Status
+      </motion.button>
       <div className="right-actions">
         <div className="temp-measurements">
           <Temp isActive={isCelsius} 

@@ -17,6 +17,9 @@ export const theme = {
       }, 
       yellow: {
         100: '#FBBC2E'
+      },
+      shadow: {
+        sm: '#00000010'
       }
     }
   }, dark: {
@@ -37,6 +40,9 @@ export const theme = {
       }, 
       yellow: {
         100: '#FBBC2E'
+      },
+      shadow: {
+        sm: '#ffffff10'
       }
     }
   }

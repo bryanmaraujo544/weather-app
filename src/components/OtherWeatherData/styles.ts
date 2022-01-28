@@ -48,7 +48,7 @@ export const WeekWeather = styled.div`
     border-radius: 20px;
     padding: 1.4rem;
     background: ${({ theme }) => theme.colors.white};
-    box-shadow: 0 1px 4px #00000005;
+    box-shadow: 0 1px 4px ${({ theme }) => theme.colors.shadow.sm};
 
     @media(max-width: 768px) {
       flex: 1;
@@ -115,7 +115,7 @@ export const TodayHighlights = styled.section`
       padding: 2rem;
       background: ${({ theme }) => theme.colors.white};
       border-radius: 20px;
-      box-shadow: 0 2px 5px #00000005;
+      box-shadow: 0 2px 4px ${({ theme }) => theme.colors.shadow.sm};
       
       .min-max {
         display: flex;

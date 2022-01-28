@@ -28,6 +28,16 @@ export const Container = styled.header`
     }
   }
 
+  .find-cities-btn {
+    background: ${({ theme }) => theme.colors.white};
+    border-radius: 9999px;
+    padding: .8rem 1.6rem;
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.gray[900]};
+    box-shadow: 0 1px 3px ${({ theme }) => theme.colors.shadow.sm};
+    cursor: pointer;
+  }
+
   .right-actions {
     display: flex;
     align-items: center;
